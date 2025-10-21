@@ -1,3 +1,27 @@
+**Table of Contents**
+
+- [Prisma With MSSQL Server](#prisma-with-mssql-server)
+  - [1. Setup](#1-setup)
+    - [1.1 Project Folder](#11-project-folder)
+    - [1.2 Initialize the Project as a Node.js Project](#12-initialize-the-project-as-a-nodejs-project)
+    - [1.3 Install Prisma](#13-install-prisma)
+    - [1.4 Set Up Prisma](#14-set-up-prisma)
+  - [2. Create Models](#2-create-models)
+    - [2.1 Department Model](#21-department-model)
+    - [2.2 Employee Model](#22-employee-model)
+  - [3. Run migrations](#3-run-migrations)
+  - [3. Create Departments](#3-create-departments)
+  - [4. Get all departments](#4-get-all-departments)
+  - [5. Get department](#5-get-department)
+  - [6. Delete department](#6-delete-department)
+  - [7. Update department](#7-update-department)
+  - [8. Insert Employees](#8-insert-employees)
+  - [9. Get all Employees](#9-get-all-employees)
+  - [10. Retrieve Employees by Salary Range](#10-retrieve-employees-by-salary-range)
+  - [11. Delete Employee](#11-delete-employee)
+  - [12. Update Employee](#12-update-employee)
+
+
 # Prisma With MSSQL Server
 In this activity, you’ll learn how to use Prisma to interact directly with a SQL Server database.
 
