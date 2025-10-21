@@ -66,9 +66,9 @@ Open the .env file and update the DATABASE_URL with your actual SQL Server crede
 DATABASE_URL="sqlserver://localhost:1433;database=<DB_NAME>;user=<USERNAME>;password=<PASSWORD>;
 ```
 Replace:
-- <DB_NAME> with the database name, in this case, let's name the database as `Company`.
-- <USERNAME> with your sql server username.
-- <PASSWORD> with your sql server password.
+- DB_NAME with the database name, in this case, let's name the database as `Company`.
+- USERNAME with your sql server username.
+- PASSWORD with your sql server password.
 
 Prisma needs valid database credentials to connect to SQL Server.
 
@@ -111,6 +111,8 @@ It should have the following fields:
 - `departmentName`: A string that uniquely identifies each department. This will act as the primary key.
 - `location`: A string representing where the department is located.
 
+The model should be mapped to a table called `Departments` in the database.
+
 ### 2.2 Employee Model
 This model represents employees working in the organization.
 
@@ -121,6 +123,10 @@ It should include the following fields:
 - `email`: A string representing the employee’s email address. Each email must be unique.
 - `salary`: This field represents the employee’s monthly salary. It should be stored as a numeric value that allows for decimal precision. (Hint: prisma doesn't have a `currency` type, so use `Decimal` here)
 - `departmentId`: A string that references the `id` of a department in the Department table. This establishes a relationship between employees and departments.
+
+Establish a one to many relationship between department and employees: "A department can have several employees but each employee can only belong to one department"
+
+The model should be mapped to a table called `Employees` in the database.
 
 ## 3. Run migrations
 Once your models are fully defined in the `schema.prisma` file, the next step is to run a migration.
@@ -201,7 +207,7 @@ createEmployee("EMP007", "Samuel", "Kiptoo", "samuel.kiptoo@company.com", 63000.
 createEmployee("EMP008", "Mary", "Wanjiku", "mary.wanjiku@company.com", 89000.00, "DPT003");
 createEmployee("EMP009", "Peter", "Kamau", "peter.kamau@company.com", 95000.00, "DPT004");
 createEmployee("EMP010", "Faith", "Achieng", "faith.achieng@company.com", 78000.00, "DPT005");
-createEmployee("EMP011", "Ann", "Chebet", "ann.chebet@company.com", 78000.00, "DPT006");
+createEmployee("EMP011", "Ann", "Chebet", "ann.chebet@company.com", 78000.00, "DPT003");
 ```
 
 ## 9. Get all Employees
@@ -215,6 +221,7 @@ Write a function named `getBySalaryRange` that retrieves all employees whose sal
 The function accepts two parameters:
 - `min`: minimum salary value.
 - `max`: maximum salary value.
+
 Before performing the query, add a validation check:
 - if `min` is greater than `max`, throw an error `"Minimum cannot be greater than maximum"`
 
